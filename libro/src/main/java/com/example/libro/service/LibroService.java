@@ -1,7 +1,7 @@
 package com.example.libro.service;
 
-
 import com.example.libro.dto.LibroDTO;
+import com.example.libro.model.Libro;
 import com.example.libro.repository.LibroRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +18,19 @@ public class LibroService {
     }
 
     public List<LibroDTO> listar() {
-        return repository.listar()
-                .stream()
-                .map(l -> new LibroDTO(l.getId(), l.getTitulo()))
+        // Usamos findAll() que es el estándar de JpaRepository
+        return repository.findAll().stream()
+                .map(this::convertirADTO)
                 .collect(Collectors.toList());
+    }
+
+    private LibroDTO convertirADTO(Libro libro) {
+        LibroDTO dto = new LibroDTO();
+        dto.setId(libro.getId());
+        dto.setTitulo(libro.getTitulo());
+        dto.setAutor(libro.getAutor());
+        dto.setIsbn(libro.getIsbn());
+        dto.setPrecio(libro.getPrecio());
+        return dto;
     }
 }
