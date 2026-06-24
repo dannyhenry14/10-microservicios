@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      routes:
+
+        - id: carrito
+          uri: lb://carrito
+          predicates:
+            - Path=/carrito/**
+
+        - id: blog
+          uri: lb://blog
+          predicates:
+            - Path=/blog/**
+
+        - id: comentarios
+          uri: lb://comentarios
+          predicates:
+            - Path=/comentarios/**
+
+        - id: inventario
+          uri: lb://inventario
+          predicates:
+            - Path=/inventario/**
+
+        - id: libro
+          uri: lb://libro
+          predicates:
+            - Path=/libro/**
+
+        - id: notificaciones
+          uri: lb://notificaciones
+          predicates:
+            - Path=/notificaciones/**
+
+        - id: prestamos
+          uri: lb://prestamos
+          predicates:
+            - Path=/prestamos/**
+
+        - id: reserva
+          uri: lb://reserva
+          predicates:
+            - Path=/reserva/**
+
+        - id: talleres
+          uri: lb://talleres
+          predicates:
+            - Path=/talleres/**
+
+        - id: usuarios
+          uri: lb://usuarios
+          predicates:
+            - Path=/usuarios/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
