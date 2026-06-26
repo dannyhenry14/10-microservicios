@@ -14,11 +14,11 @@ public class Libro {
     private String isbn;
     private Double precio;
 
-    // --- ESCRÍBELOS MANUALMENTE O GENÉRALOS CON INTELIJ ---
+
     public Long getId() { return id; }
     public String getTitulo() { return titulo; }
     public String getAutor() { return autor; }
     public String getIsbn() { return isbn; }
     public Double getPrecio() { return precio; }
-    // ... agrega los setters si los necesitas más adelante
+
 }
