@@ -15,11 +15,13 @@ public class BlogService {
     @Autowired
     private BlogRepository repo;
 
+
     public List<BlogDTO> obtenerTodos() {
         return repo.findAll().stream()
-                .map(b -> new BlogDTO(b.getId(), b.getTitulo(), b.getContenido()))
+                .map(this::convertirADTO)
                 .collect(Collectors.toList());
     }
+
 
     public BlogDTO guardar(BlogDTO dto) {
         Blog blog = new Blog();
@@ -27,6 +29,15 @@ public class BlogService {
         blog.setContenido(dto.getContenido());
 
         Blog guardado = repo.save(blog);
-        return new BlogDTO(guardado.getId(), guardado.getTitulo(), guardado.getContenido());
+        return convertirADTO(guardado);
+    }
+
+
+    private BlogDTO convertirADTO(Blog blog) {
+        BlogDTO dto = new BlogDTO();
+        dto.setId(blog.getId());
+        dto.setTitulo(blog.getTitulo());
+        dto.setContenido(blog.getContenido());
+        return dto;
     }
 }

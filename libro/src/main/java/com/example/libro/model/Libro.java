@@ -1,10 +1,17 @@
 package com.example.libro.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "libro")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Libro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,12 +20,4 @@ public class Libro {
     private String autor;
     private String isbn;
     private Double precio;
-
-
-    public Long getId() { return id; }
-    public String getTitulo() { return titulo; }
-    public String getAutor() { return autor; }
-    public String getIsbn() { return isbn; }
-    public Double getPrecio() { return precio; }
-
 }

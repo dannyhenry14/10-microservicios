@@ -1,16 +1,16 @@
-package com.example.comentarios.dto;
+package com.example.blog.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ComentarioDTO {
+public class BlogDTO {
 
     private Long id;
-    private Long usuarioId;
-    private Long libroId;
-    private String texto;
+    private String titulo;
+    private String contenido;
 }

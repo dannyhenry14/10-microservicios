@@ -4,8 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Inventario {
 
     @Id
@@ -13,39 +19,4 @@ public class Inventario {
     private Long id;
     private Long libroId;
     private int cantidad;
-
-
-    public Inventario() {
-    }
-
-
-    public Inventario(Long id, Long libroId, int cantidad) {
-        this.id = id;
-        this.libroId = libroId;
-        this.cantidad = cantidad;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getLibroId() {
-        return libroId;
-    }
-
-    public void setLibroId(Long libroId) {
-        this.libroId = libroId;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
 }

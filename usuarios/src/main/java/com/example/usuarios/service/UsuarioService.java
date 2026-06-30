@@ -18,7 +18,13 @@ public class UsuarioService {
 
     public List<UsuarioDTO> listar() {
         return repository.listar().stream()
-                .map(u -> new UsuarioDTO(u.getId(), u.getNombre()))
+                .map(u -> {
+                    UsuarioDTO dto = new UsuarioDTO();
+                    dto.setId(u.getId());
+                    dto.setNombre(u.getNombre());
+                    dto.setCorreo(u.getCorreo());
+                    return dto;
+                })
                 .collect(Collectors.toList());
     }
 }

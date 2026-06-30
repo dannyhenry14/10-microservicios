@@ -16,8 +16,8 @@
         <module name="notificaciones" />
         <module name="talleres" />
         <module name="reserva" />
-        <module name="comentarios" />
         <module name="inventario" />
+        <module name="comentarios" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>

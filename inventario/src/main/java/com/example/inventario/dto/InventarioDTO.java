@@ -1,4 +1,4 @@
-package com.example.comentarios.dto;
+package com.example.inventario.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ComentarioDTO {
+public class InventarioDTO {
 
     private Long id;
-    private Long usuarioId;
     private Long libroId;
-    private String texto;
+    private int cantidad;
 }

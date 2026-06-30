@@ -18,14 +18,30 @@ public class ReservaService {
     }
 
     public List<ReservaDTO> listar() {
-        return repo.findAll().stream().map(r ->
-                new ReservaDTO(r.getId(), r.getUsuarioId(), r.getLibroId())
-        ).collect(Collectors.toList());
+        return repo.findAll().stream()
+                .map(r -> {
+                    ReservaDTO dto = new ReservaDTO();
+                    dto.setId(r.getId());
+                    dto.setUsuarioId(r.getUsuarioId());
+                    dto.setLibroId(r.getLibroId());
+                    return dto;
+                })
+                .collect(Collectors.toList());
     }
 
+
     public ReservaDTO guardar(ReservaDTO dto) {
-        Reserva reserva = new Reserva(null, dto.getUsuarioId(), dto.getLibroId());
-        Reserva guardado = repo.save(reserva);
-        return new ReservaDTO(guardado.getId(), guardado.getUsuarioId(), guardado.getLibroId());
+        Reserva reserva = new Reserva();
+        reserva.setUsuarioId(dto.getUsuarioId());
+        reserva.setLibroId(dto.getLibroId());
+
+        Reserva guardada = repo.save(reserva);
+
+        ReservaDTO resultadoDto = new ReservaDTO();
+        resultadoDto.setId(guardada.getId());
+        resultadoDto.setUsuarioId(guardada.getUsuarioId());
+        resultadoDto.setLibroId(guardada.getLibroId());
+
+        return resultadoDto;
     }
 }

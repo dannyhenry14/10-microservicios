@@ -4,7 +4,6 @@ import com.example.inventario.dto.InventarioDTO;
 import com.example.inventario.repository.InventarioRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
 import java.util.stream.Collectors;
 
 @Service
@@ -19,7 +18,12 @@ public class InventarioService {
     public List<InventarioDTO> listar() {
         return repository.listar()
                 .stream()
-                .map(i -> new InventarioDTO(i.getLibroId(), i.getCantidad()))
+                .map(i -> {
+                    InventarioDTO dto = new InventarioDTO();
+                    dto.setLibroId(i.getLibroId());
+                    dto.setCantidad(i.getCantidad());
+                    return dto;
+                })
                 .collect(Collectors.toList());
     }
 }
