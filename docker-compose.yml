@@ -1,254 +1,344 @@
-
-
 services:
   db-mysql:
     image: mysql:8.0
     container_name: db-mysql
+    restart: unless-stopped
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - microservices-network
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
       interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 20s
-
+      retries: 10
+      start_period: 30s
 
   config-server:
     build: ./config-server
+    image: config-server:1.0
     container_name: config-server
+    restart: unless-stopped
     ports:
       - "8888:8888"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info
-      - MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS=always
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - microservices-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
       interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 30s
-
+      retries: 10
+      start_period: 40s
 
   eureka:
     build: ./eureka
+    image: eureka:1.0
     container_name: eureka
+    restart: unless-stopped
     ports:
       - "8761:8761"
-    depends_on:
-      config-server:
-        condition: service_healthy
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - microservices-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
       interval: 10s
       timeout: 5s
-      retries: 5
-      start_period: 30s
-
-
-  gateway:
-    build: ./gateway
-    container_name: gateway
-    ports:
-      - "8080:8080"
-    environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info
-    depends_on:
-      config-server:
-        condition: service_healthy
-      eureka:
-        condition: service_healthy
-
+      retries: 10
+      start_period: 40s
 
   blog:
     build: ./blog
+    image: blog:1.0
     container_name: blog
+    restart: unless-stopped
     ports:
-      - "8082:8082"
+      - "8081:8081"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   carrito:
     build: ./carrito
+    image: carrito:1.0
     container_name: carrito
+    restart: unless-stopped
     ports:
       - "8083:8083"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   reserva:
     build: ./reserva
+    image: reserva:1.0
     container_name: reserva
+    restart: unless-stopped
     ports:
       - "8084:8084"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8084/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   notificaciones:
     build: ./notificaciones
+    image: notificaciones:1.0
     container_name: notificaciones
+    restart: unless-stopped
     ports:
       - "8085:8085"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
-      config-server:
+      db-mysql:
         condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8085/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
-  comentario:
+  comentarios:
     build: ./comentarios
-    container_name: comentario
+    image: comentarios:1.0
+    container_name: comentarios
+    restart: unless-stopped
     ports:
       - "8086:8086"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   libro:
     build: ./libro
+    image: libro:1.0
     container_name: libro
+    restart: unless-stopped
     ports:
       - "8087:8087"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8087/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   prestamos:
     build: ./prestamos
+    image: prestamos:1.0
     container_name: prestamos
+    restart: unless-stopped
     ports:
       - "8088:8088"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8088/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   usuarios:
     build: ./usuarios
+    image: usuarios:1.0
     container_name: usuarios
+    restart: unless-stopped
     ports:
       - "8089:8089"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8089/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   inventario:
     build: ./inventario
+    image: inventario:1.0
     container_name: inventario
+    restart: unless-stopped
     ports:
       - "8091:8091"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8091/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
   talleres:
     build: ./talleres
+    image: talleres:1.0
     container_name: talleres
+    restart: unless-stopped
     ports:
       - "8092:8092"
     environment:
-      - JAVA_OPTS=-Xms128m -Xmx256m
-      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,swagger-ui
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
     depends_on:
       db-mysql:
         condition: service_healthy
-      config-server:
-        condition: service_healthy
       eureka:
         condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8092/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
+  gateway:
+    build: ./gateway
+    image: gateway:1.0
+    container_name: gateway
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+    depends_on:
+      eureka:
+        condition: service_healthy
+      blog:
+        condition: service_healthy
+      carrito:
+        condition: service_healthy
+      reserva:
+        condition: service_healthy
+      notificaciones:
+        condition: service_healthy
+      comentarios:
+        condition: service_healthy
+      libro:
+        condition: service_healthy
+      prestamos:
+        condition: service_healthy
+      usuarios:
+        condition: service_healthy
+      inventario:
+        condition: service_healthy
+      talleres:
+        condition: service_healthy
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
 
 volumes:
   mysql_data:
+
+networks:
+  microservices-network:
+    driver: bridge

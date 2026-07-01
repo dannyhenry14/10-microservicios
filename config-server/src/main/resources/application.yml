@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: ${PORT:8888}
 
 spring:
   application:
@@ -10,4 +10,13 @@ spring:
     config:
       server:
         native:
-          search-locations: file:///C:/Users/danny/Downloads/microservicios/config-server
+          search-locations: ${CONFIG_SERVER_SEARCH_LOCATIONS:file:./config-repo}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
