@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ReservaApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void main() {
+		ReservaApplication.main(new String[] {});
 	}
-
 }

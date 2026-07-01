@@ -8,6 +8,6 @@ class LibroApplicationTests {
 
 	@Test
 	void contextLoads() {
+		LibroApplication.main(new String[] {});
 	}
-
 }

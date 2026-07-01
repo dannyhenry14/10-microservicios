@@ -8,6 +8,6 @@ class TalleresApplicationTests {
 
 	@Test
 	void contextLoads() {
+		TalleresApplication.main(new String[] {});
 	}
-
 }

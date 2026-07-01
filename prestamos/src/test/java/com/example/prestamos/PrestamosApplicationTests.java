@@ -8,6 +8,6 @@ class PrestamosApplicationTests {
 
 	@Test
 	void contextLoads() {
+		PrestamosApplication.main(new String[] {});
 	}
-
 }

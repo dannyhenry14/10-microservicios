@@ -17,7 +17,7 @@ public class PrestamoService {
     }
 
     public List<PrestamoDTO> listar() {
-        return repository.listar()
+        return repository.findAll()
                 .stream()
                 .map(p -> new PrestamoDTO(
                         p.getId(),

@@ -8,6 +8,6 @@ class InventarioApplicationTests {
 
 	@Test
 	void contextLoads() {
+		InventarioApplication.main(new String[] {});
 	}
-
 }

@@ -10,4 +10,8 @@ class CarritoApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void mainMethodTest() {
+		CarritoApplication.main(new String[] {});
+	}
 }

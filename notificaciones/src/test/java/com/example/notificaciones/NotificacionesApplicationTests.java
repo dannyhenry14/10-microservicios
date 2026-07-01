@@ -8,6 +8,6 @@ class NotificacionesApplicationTests {
 
 	@Test
 	void contextLoads() {
+		NotificacionesApplication.main(new String[] {});
 	}
-
 }

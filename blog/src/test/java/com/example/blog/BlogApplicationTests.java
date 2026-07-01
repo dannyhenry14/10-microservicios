@@ -10,4 +10,8 @@ class BlogApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void mainMethodTest() {
+		BlogApplication.main(new String[] {});
+	}
 }
