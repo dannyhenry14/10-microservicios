@@ -1,0 +1,1 @@
+-- Initial Flyway migration. Tables are maintained by JPA for this academic demo.

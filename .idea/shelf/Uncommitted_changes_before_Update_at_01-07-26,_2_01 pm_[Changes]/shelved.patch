@@ -1,0 +1,305 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/blog/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/libro/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/eureka/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/carrito/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/gateway/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/reserva/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/talleres/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/usuarios/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/prestamos/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/inventario/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/comentarios/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/config-server/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/notificaciones/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" project-jdk-name=\"ms-21\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 3ae8fba3c4bc6b1d8b3fa5b06debc424086b2e24)
++++ b/.idea/misc.xml	(date 1782835017678)
+@@ -5,22 +5,22 @@
+     <option name="originalFiles">
+       <list>
+         <option value="$PROJECT_DIR$/blog/pom.xml" />
+-        <option value="$PROJECT_DIR$/libro/pom.xml" />
++        <option value="$PROJECT_DIR$/carrito/pom.xml" />
++        <option value="$PROJECT_DIR$/comentarios/pom.xml" />
++        <option value="$PROJECT_DIR$/config-server/pom.xml" />
+         <option value="$PROJECT_DIR$/eureka/pom.xml" />
+-        <option value="$PROJECT_DIR$/carrito/pom.xml" />
+         <option value="$PROJECT_DIR$/gateway/pom.xml" />
++        <option value="$PROJECT_DIR$/inventario/pom.xml" />
++        <option value="$PROJECT_DIR$/libro/pom.xml" />
++        <option value="$PROJECT_DIR$/notificaciones/pom.xml" />
++        <option value="$PROJECT_DIR$/prestamos/pom.xml" />
+         <option value="$PROJECT_DIR$/reserva/pom.xml" />
+         <option value="$PROJECT_DIR$/talleres/pom.xml" />
+         <option value="$PROJECT_DIR$/usuarios/pom.xml" />
+-        <option value="$PROJECT_DIR$/prestamos/pom.xml" />
+-        <option value="$PROJECT_DIR$/inventario/pom.xml" />
+-        <option value="$PROJECT_DIR$/comentarios/pom.xml" />
+-        <option value="$PROJECT_DIR$/config-server/pom.xml" />
+-        <option value="$PROJECT_DIR$/notificaciones/pom.xml" />
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="ms-21" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" project-jdk-name="openjdk-26" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+-</project>
+\ No newline at end of file
++</project>
+Index: prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.prestamos.dto;\n\nimport lombok.AllArgsConstructor;\nimport lombok.Data;\nimport lombok.NoArgsConstructor;\n\n@Data\n@NoArgsConstructor\n@AllArgsConstructor\npublic class PrestamoDTO {\n\n    private Long id;\n    private Long usuarioId;\n    private Long libroId;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java b/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java
+--- a/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java	(revision 3ae8fba3c4bc6b1d8b3fa5b06debc424086b2e24)
++++ b/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java	(date 1782835030082)
+@@ -1,15 +1,44 @@
+ package com.example.prestamos.dto;
+ 
+-import lombok.AllArgsConstructor;
+-import lombok.Data;
+-import lombok.NoArgsConstructor;
+-
+-@Data
+-@NoArgsConstructor
+-@AllArgsConstructor
+ public class PrestamoDTO {
+ 
+     private Long id;
+     private Long usuarioId;
+     private Long libroId;
+-}
+\ No newline at end of file
++
++    // Constructor vacío
++    public PrestamoDTO() {
++    }
++
++    // Constructor con parámetros
++    public PrestamoDTO(Long id, Long usuarioId, Long libroId) {
++        this.id = id;
++        this.usuarioId = usuarioId;
++        this.libroId = libroId;
++    }
++
++    // Getters y Setters
++    public Long getId() {
++        return id;
++    }
++
++    public void setId(Long id) {
++        this.id = id;
++    }
++
++    public Long getUsuarioId() {
++        return usuarioId;
++    }
++
++    public void setUsuarioId(Long usuarioId) {
++        this.usuarioId = usuarioId;
++    }
++
++    public Long getLibroId() {
++        return libroId;
++    }
++
++    public void setLibroId(Long libroId) {
++        this.libroId = libroId;
++    }
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"b26612b3-60f7-4f4f-9459-e5b51083de83\" name=\"Changes\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/dto/BlogDTO.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/blog/src/test/java/com/example/blog/BlogServiceTest.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/carrito/src/main/java/com/example/carrito/dto/CarritoDTO.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/config-server/src/main/resources/config/application.yml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/dto/InventarioDTO.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/dto/ReservaDTO.java\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/dto/UsuarioDTO.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/compiler.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/compiler.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/blog/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/blog/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/controller/BlogController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/controller/BlogController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/model/Blog.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/model/Blog.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/service/BlogService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/blog/src/main/java/com/example/blog/service/BlogService.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/carrito/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/carrito/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/carrito/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/carrito/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/carrito/src/main/java/com/example/carrito/model/Carrito.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/carrito/src/main/java/com/example/carrito/model/Carrito.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/comentarios/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/comentarios/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/comentarios/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/comentarios/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/dto/ComentarioDTO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/dto/ComentarioDTO.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/model/Comentario.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/model/Comentario.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/config-server/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config-server/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/config-server/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/config-server/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/docker-compose.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/docker-compose.yml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/eureka/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/eureka/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/eureka/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/eureka/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/gateway/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gateway/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/gateway/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gateway/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/gateway/src/main/resources/application.yml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/gateway/src/main/resources/application.yml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/inventario/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/inventario/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/inventario/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/inventario/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/model/Inventario.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/model/Inventario.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/service/InventarioService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/service/InventarioService.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/libro/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/libro/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/libro/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/libro/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/libro/src/main/java/com/example/libro/controller/LibroController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/libro/src/main/java/com/example/libro/controller/LibroController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/libro/src/main/java/com/example/libro/dto/LibroDTO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/libro/src/main/java/com/example/libro/dto/LibroDTO.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/libro/src/main/java/com/example/libro/model/Libro.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/libro/src/main/java/com/example/libro/model/Libro.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/notificaciones/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/notificaciones/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/notificaciones/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/notificaciones/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/dto/NotificacionDTO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/dto/NotificacionDTO.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/model/Notificacion.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/model/Notificacion.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/prestamos/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/prestamos/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/prestamos/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/prestamos/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/model/Prestamo.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/model/Prestamo.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/reserva/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/reserva/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/reserva/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/reserva/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/controller/ReservaController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/controller/ReservaController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/model/Reserva.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/model/Reserva.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/service/ReservaService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/service/ReservaService.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/talleres/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/talleres/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/talleres/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/talleres/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/dto/TallerDTO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/dto/TallerDTO.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/model/Taller.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/model/Taller.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/usuarios/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/usuarios/Dockerfile\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/usuarios/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/usuarios/pom.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/model/Usuario.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/model/Usuario.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/service/UsuarioService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/service/UsuarioService.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\n  \"lastFilter\": {\n    \"state\": \"OPEN\",\n    \"assignee\": \"dannyhenry14\"\n  }\n}]]></component>\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\n  \"selectedUrlAndAccountId\": {\n    \"url\": \"https://github.com/dannyhenry14/10-microservicios.git\",\n    \"accountId\": \"7a80367f-deb9-4e83-af42-e468d6fb137c\"\n  }\n}]]></component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"NextEditCompletionFeaturesState\">\n    <decayedCancelled>\n      <entry key=\"MS100\" value=\"1.0\" />\n      <entry key=\"MS500\" value=\"1.0000026825208175\" />\n      <entry key=\"S2\" value=\"1.0431357895320492\" />\n      <entry key=\"S5\" value=\"1.4214588123624434\" />\n      <entry key=\"S10\" value=\"2.3333274233046626\" />\n      <entry key=\"S30\" value=\"5.698252801224298\" />\n      <entry key=\"S60\" value=\"8.282901287502579\" />\n      <entry key=\"M2\" value=\"10.366284011215827\" />\n      <entry key=\"M5\" value=\"12.19892547726208\" />\n      <entry key=\"M10\" value=\"13.012300024519453\" />\n      <entry key=\"M15\" value=\"13.318868478745545\" />\n      <entry key=\"M30\" value=\"13.64711858560815\" />\n      <entry key=\"H1\" value=\"13.820278471485716\" />\n      <entry key=\"H2\" value=\"13.909292124216334\" />\n      <entry key=\"H4\" value=\"13.954430810688683\" />\n      <entry key=\"D1\" value=\"13.992374938983517\" />\n      <entry key=\"W1\" value=\"13.998909962122639\" />\n    </decayedCancelled>\n    <decayedSelected>\n      <entry key=\"MS100\" value=\"0.0\" />\n      <entry key=\"MS500\" value=\"0.0\" />\n      <entry key=\"S2\" value=\"0.0\" />\n      <entry key=\"S5\" value=\"0.0\" />\n      <entry key=\"S10\" value=\"0.0\" />\n      <entry key=\"S30\" value=\"0.0\" />\n      <entry key=\"S60\" value=\"0.0\" />\n      <entry key=\"M2\" value=\"0.0\" />\n      <entry key=\"M5\" value=\"0.0\" />\n      <entry key=\"M10\" value=\"0.0\" />\n      <entry key=\"M15\" value=\"0.0\" />\n      <entry key=\"M30\" value=\"0.0\" />\n      <entry key=\"H1\" value=\"0.0\" />\n      <entry key=\"H2\" value=\"0.0\" />\n      <entry key=\"H4\" value=\"0.0\" />\n      <entry key=\"D1\" value=\"0.0\" />\n      <entry key=\"W1\" value=\"0.0\" />\n    </decayedSelected>\n    <decayedShown>\n      <entry key=\"MS100\" value=\"0.9012504626108302\" />\n      <entry key=\"MS500\" value=\"0.9794229285472331\" />\n      <entry key=\"S2\" value=\"1.0377455490348644\" />\n      <entry key=\"S5\" value=\"1.4186355291824322\" />\n      <entry key=\"S10\" value=\"2.331084965828115\" />\n      <entry key=\"S30\" value=\"5.695390200466113\" />\n      <entry key=\"S60\" value=\"8.2791262299718\" />\n      <entry key=\"M2\" value=\"10.359067271304594\" />\n      <entry key=\"M5\" value=\"12.18953060913367\" />\n      <entry key=\"M10\" value=\"13.005089865142752\" />\n      <entry key=\"M15\" value=\"13.313309979666869\" />\n      <entry key=\"M30\" value=\"13.643901383941568\" />\n      <entry key=\"H1\" value=\"13.81854715610868\" />\n      <entry key=\"H2\" value=\"13.908393980550809\" />\n      <entry key=\"H4\" value=\"13.953973381103019\" />\n      <entry key=\"D1\" value=\"13.992297519368337\" />\n      <entry key=\"W1\" value=\"13.998898872975147\" />\n    </decayedShown>\n  </component>\n  <component name=\"ProjectColorInfo\"><![CDATA[{\n  \"associatedIndex\": 1,\n  \"fromUser\": false\n}]]></component>\n  <component name=\"ProjectId\" id=\"3Fq4HkgGZW7nIzJpRo8LVGOaf5M\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Maven.blog [compile].executor\": \"Run\",\n    \"Maven.blog [test].executor\": \"Run\",\n    \"Maven.carrito [compile].executor\": \"Run\",\n    \"Maven.comentarios [compile].executor\": \"Run\",\n    \"Maven.inventario [compile].executor\": \"Run\",\n    \"Maven.libro [compile].executor\": \"Run\",\n    \"Maven.notificaciones [compile].executor\": \"Run\",\n    \"Maven.prestamos [compile].executor\": \"Run\",\n    \"Maven.reserva [compile].executor\": \"Run\",\n    \"Maven.talleres [compile].executor\": \"Run\",\n    \"Maven.usuarios [compile].executor\": \"Run\",\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\n    \"codeWithMe.voiceChat.enabledByDefault\": \"false\",\n    \"com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1\": \"true\",\n    \"git-widget-placeholder\": \"master\",\n    \"junie.onboarding.icon.badge.shown\": \"true\",\n    \"kotlin-language-version-configured\": \"true\",\n    \"last_opened_file_path\": \"C:/Users/danny/Downloads/microservicios\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"project.structure.last.edited\": \"Project\",\n    \"project.structure.proportion\": \"0.0\",\n    \"project.structure.side.proportion\": \"0.0\",\n    \"run.configurations.included.in.services\": \"true\",\n    \"to.speed.mode.migration.done\": \"true\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RunDashboard\">\n    <option name=\"configurationTypes\">\n      <set>\n        <option value=\"KtorApplicationConfigurationType\" />\n        <option value=\"MicronautRunConfigurationType\" />\n        <option value=\"QuarkusRunConfigurationType\" />\n        <option value=\"SpringBootApplicationConfigurationType\" />\n      </set>\n    </option>\n  </component>\n  <component name=\"RunManager\" selected=\"Spring Boot.BlogApplication\">\n    <configuration name=\"BlogApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"blog\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.blog.BlogApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"CarritoApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"carrito\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.carrito.CarritoApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ComentariosApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"comentarios\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.comentarios.ComentariosApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ConfigServerApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"config-server\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.config_server.ConfigServerApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"EurekaApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"eureka\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.eureka.EurekaApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"GatewayApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"gateway\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.gateway.GatewayApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"InventarioApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"inventario\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.inventario.InventarioApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"LibroApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"libro\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.libro.LibroApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"NotificacionesApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"notificaciones\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.notificaciones.NotificacionesApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"PrestamosApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"prestamos\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.prestamos.PrestamosApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"ReservaApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"reserva\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.reserva.ReservaApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"TalleresApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"talleres\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.talleres.TalleresApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"UsuariosApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" nameIsGenerated=\"true\">\n      <module name=\"usuarios\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"com.example.usuarios.UsuariosApplication\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151\" />\n        <option value=\"bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"b26612b3-60f7-4f4f-9459-e5b51083de83\" name=\"Changes\" comment=\"\" />\n      <created>1782789179209</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1782789179209</updated>\n      <workItem from=\"1782789180399\" duration=\"1475000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 3ae8fba3c4bc6b1d8b3fa5b06debc424086b2e24)
++++ b/.idea/workspace.xml	(date 1782835051282)
+@@ -5,67 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="b26612b3-60f7-4f4f-9459-e5b51083de83" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/dto/BlogDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/blog/src/test/java/com/example/blog/BlogServiceTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/carrito/src/main/java/com/example/carrito/dto/CarritoDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/config/application.yml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/dto/InventarioDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/dto/ReservaDTO.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/dto/UsuarioDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/blog/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/controller/BlogController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/model/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/model/Blog.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog/src/main/java/com/example/blog/service/BlogService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/carrito/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/carrito/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/carrito/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/carrito/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/carrito/src/main/java/com/example/carrito/model/Carrito.java" beforeDir="false" afterPath="$PROJECT_DIR$/carrito/src/main/java/com/example/carrito/model/Carrito.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/comentarios/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/comentarios/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/comentarios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/comentarios/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/dto/ComentarioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/dto/ComentarioDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/model/Comentario.java" beforeDir="false" afterPath="$PROJECT_DIR$/comentarios/src/main/java/com/example/comentarios/model/Comentario.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/config-server/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/eureka/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/eureka/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/inventario/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/inventario/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/model/Inventario.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/model/Inventario.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/service/InventarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/src/main/java/com/example/inventario/service/InventarioService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/libro/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/libro/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/libro/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/libro/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/libro/src/main/java/com/example/libro/controller/LibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/libro/src/main/java/com/example/libro/controller/LibroController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/libro/src/main/java/com/example/libro/dto/LibroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/libro/src/main/java/com/example/libro/dto/LibroDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/libro/src/main/java/com/example/libro/model/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/libro/src/main/java/com/example/libro/model/Libro.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/notificaciones/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/notificaciones/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/notificaciones/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notificaciones/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/dto/NotificacionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/dto/NotificacionDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/model/Notificacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/notificaciones/src/main/java/com/example/notificaciones/model/Notificacion.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/prestamos/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/prestamos/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/prestamos/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/prestamos/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/dto/PrestamoDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/model/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/prestamos/src/main/java/com/example/prestamos/model/Prestamo.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/reserva/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/reserva/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/reserva/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reserva/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/controller/ReservaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/controller/ReservaController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/model/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/model/Reserva.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/service/ReservaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reserva/src/main/java/com/example/reserva/service/ReservaService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/talleres/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/talleres/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/talleres/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/talleres/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/dto/TallerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/dto/TallerDTO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/model/Taller.java" beforeDir="false" afterPath="$PROJECT_DIR$/talleres/src/main/java/com/example/talleres/model/Taller.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/usuarios/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/Dockerfile" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/usuarios/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/model/Usuario.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/usuarios/src/main/java/com/example/usuarios/service/UsuarioService.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -75,18 +16,18 @@
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+-  "lastFilter": {
+-    "state": "OPEN",
+-    "assignee": "dannyhenry14"
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;dannyhenry14&quot;
+   }
+-}]]></component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/dannyhenry14/10-microservicios.git",
+-    "accountId": "7a80367f-deb9-4e83-af42-e468d6fb137c"
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/dannyhenry14/10-microservicios.git&quot;,
++    &quot;accountId&quot;: &quot;7a80367f-deb9-4e83-af42-e468d6fb137c&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
+@@ -153,51 +94,51 @@
+       <entry key="W1" value="13.998898872975147" />
+     </decayedShown>
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 1,
+-  "fromUser": false
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 1,
++  &quot;fromUser&quot;: false
++}</component>
+   <component name="ProjectId" id="3Fq4HkgGZW7nIzJpRo8LVGOaf5M" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Maven.blog [compile].executor": "Run",
+-    "Maven.blog [test].executor": "Run",
+-    "Maven.carrito [compile].executor": "Run",
+-    "Maven.comentarios [compile].executor": "Run",
+-    "Maven.inventario [compile].executor": "Run",
+-    "Maven.libro [compile].executor": "Run",
+-    "Maven.notificaciones [compile].executor": "Run",
+-    "Maven.prestamos [compile].executor": "Run",
+-    "Maven.reserva [compile].executor": "Run",
+-    "Maven.talleres [compile].executor": "Run",
+-    "Maven.usuarios [compile].executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+-    "codeWithMe.voiceChat.enabledByDefault": "false",
+-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+-    "git-widget-placeholder": "master",
+-    "junie.onboarding.icon.badge.shown": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/danny/Downloads/microservicios",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+-    "run.configurations.included.in.services": "true",
+-    "to.speed.mode.migration.done": "true",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Maven.blog [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.blog [test].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.carrito [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.comentarios [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.inventario [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.libro [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.notificaciones [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.prestamos [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.reserva [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.talleres [compile].executor&quot;: &quot;Run&quot;,
++    &quot;Maven.usuarios [compile].executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
++    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
++    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/danny/Downloads/microservicios&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
++    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunDashboard">
+     <option name="configurationTypes">
+       <set>
